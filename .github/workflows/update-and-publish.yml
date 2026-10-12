@@ -1,0 +1,64 @@
+name: 마라톤 일정 갱신 및 공개
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 한국시간 매일 오전 8:17 / 오후 8:17 (UTC + 9)
+    - cron: '17 23,11 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'data/**'
+      - 'scripts/**'
+      - '.github/workflows/**'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: marathon-pages
+  cancel-in-progress: false
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 저장소 가져오기
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: 파이썬 준비
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 대회 데이터 갱신
+        run: python scripts/update_events.py
+
+      - name: 검증된 데이터 저장
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/events.json docs/update-status.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update marathon race data [skip ci]"
+            git push
+          fi
+
+      - name: GitHub Pages 설정
+        uses: actions/configure-pages@v5
+
+      - name: Pages 배포 파일 업로드
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs
+
+      - name: 업데이트 데이터 배포
+        id: deployment
+        uses: actions/deploy-pages@v4
