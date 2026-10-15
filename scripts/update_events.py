@@ -6,7 +6,7 @@ No runin.kr crawler is enabled or embedded: enable only a feed supplied with use
 from __future__ import annotations
 
 import csv
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 import json
 from pathlib import Path
 import re
@@ -16,7 +16,8 @@ from urllib.request import Request, urlopen
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'data'
 DOCS = ROOT / 'docs'
-FIELDS = ('title', 'run', 'start', 'end', 'fee', 'startPlace', 'officialLink', 'badgeText', 'source')
+FIELDS = ('title', 'run', 'start', 'end', 'fee', 'startPlace', 'officialLink', 'badgeText', 'source', 'registrationUrl', 'linkType', 'verifiedAt', 'registrationStatus', 'statusVerifiedAt', 'statusSourceUrl')
+ALLOWED_STATUS = {'open', 'closed', 'upcoming', 'unknown', 'cancelled', ''}
 ALLOWED_BADGES = {'접수중', '접수예정', '접수마감', '접수정보 없음', '공식확인', '취소', ''}
 DATE = re.compile(r'^20\d{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])$')
 SAFE_URL = re.compile(r'^https?://[^\s<>"\']+$')
@@ -71,7 +72,18 @@ def normalize(raw, provenance=''):
         'officialLink': url,
         'badgeText': badge,
         'source': str(raw.get('source') or provenance).strip(),
+        'registrationUrl': str(raw.get('registrationUrl') or '').strip(),
+        'linkType': str(raw.get('linkType') or '').strip(),
+        'verifiedAt': str(raw.get('verifiedAt') or '').strip(),
+        'registrationStatus': str(raw.get('registrationStatus') or '').strip(),
+        'statusVerifiedAt': str(raw.get('statusVerifiedAt') or '').strip(),
+        'statusSourceUrl': str(raw.get('statusSourceUrl') or '').strip(),
     }
+    if e['registrationStatus'] not in ALLOWED_STATUS:
+        raise ValueError(f'올바르지 않은 접수검증 상태: {e["registrationStatus"]!r}')
+    for k in ('registrationUrl', 'statusSourceUrl'):
+        if e[k] and not SAFE_URL.fullmatch(e[k]):
+            raise ValueError(f'올바르지 않은 URL: {e[k]}')
     if e['start'] and e['end'] and e['start'] > e['end']:
         raise ValueError(f'접수 시작일이 마감일보다 늦음: {title}')
     # 과거 임시값 1월 1일~대회일을 실제 접수 기간으로 오인하지 않게 합니다.
@@ -143,6 +155,59 @@ def manual_csv_rows(path):
     return result
 
 
+def apply_status_overrides(table):
+    """Manual, source-backed changes supersede old snapshots, including empty-field clearing."""
+    overrides = read_json(DATA/'status_overrides.json', [])
+    if not isinstance(overrides, list):
+        raise ValueError('status_overrides.json은 JSON 배열이어야 합니다')
+    fields = {'start','end','officialLink','registrationUrl','linkType','verifiedAt',
+              'registrationStatus','statusVerifiedAt','statusSourceUrl','badgeText','source'}
+    count = 0
+    for override in overrides:
+        if not isinstance(override, dict):
+            raise ValueError('접수 상태 수동 보정은 객체여야 합니다')
+        key = event_key({'run':date_value(override.get('run')), 'title':str(override.get('title') or '')})
+        if key not in table:
+            raise ValueError(f'수동 보정할 대회가 기존 목록에 없음: {key}')
+        for field in fields.intersection(override):
+            val = str(override[field] or '').strip()
+            if field in ('start', 'end'): val = date_value(val)
+            if field in ('officialLink','registrationUrl','statusSourceUrl') and val and not SAFE_URL.fullmatch(val):
+                raise ValueError(f'수동 보정 URL 오류: {field}={val}')
+            if field == 'registrationStatus' and val not in ALLOWED_STATUS:
+                raise ValueError(f'수동 보정 상태 오류: {val}')
+            table[key][field] = val
+        count += 1
+    return count
+
+
+def final_status(e, today):
+    """Never infer 'open' from dates, a landing page, or an old text badge."""
+    if e['run'] < today:
+        return 'closed'
+    if e.get('badgeText') in ('취소',):
+        return 'cancelled'
+    if e.get('registrationStatus') in ('closed','cancelled'):
+        return e['registrationStatus']
+    if e.get('end') and e['end'] < today:
+        return 'closed'
+    # A newer source-backed reopening notice supersedes a stale legacy closed badge.
+    # Only recent, source-backed confirmation may display 'open'.
+    if e.get('registrationStatus') == 'open' and e.get('statusVerifiedAt') and e.get('statusSourceUrl') and (e.get('registrationUrl') or e.get('officialLink')):
+        try:
+            stamp = e['statusVerifiedAt'].replace('Z','+00:00')
+            checked = datetime.fromisoformat(stamp)
+            if checked.tzinfo is None: checked = checked.replace(tzinfo=timezone.utc)
+            hours = (datetime.now(timezone.utc) - checked.astimezone(timezone.utc)).total_seconds()/3600
+            if 0 <= hours <= 24: return 'open'
+        except ValueError:
+            pass
+    if e.get('badgeText') == '접수마감':
+        return 'closed'
+    if e.get('start') and e['start'] > today:
+        return 'upcoming'
+    return 'unknown'
+
 def main():
     data = read_json(DATA/'base_events.json', [])
     if not isinstance(data, list) or len(data) < 1:
@@ -173,21 +238,37 @@ def main():
     # Manual, human-verified values have final precedence.
     merge_rows(table, manual, '직접 확인한 정보')
     stats['manual_rows'] = len(manual)
+    stats['status_override_rows'] = apply_status_overrides(table)
     events = sorted(table.values(), key=lambda e:(e['run'],e['title']))
     if old_events and len(events) < max(1, round(len(old_events)*0.85)):
         raise SystemExit(f'보호 중단: {len(old_events)} → {len(events)} 대회 급감. 기존 데이터 보존.')
     if len(events) < len(data)*0.85:
         raise SystemExit('보호 중단: 초기 스냅샷 대비 항목이 과도하게 줄었습니다.')
+    # Original '접수중' is an unverified legacy label. Remove it from the published data.
+    today = datetime.now(timezone.utc).astimezone(timezone(timedelta(hours=9))).date().isoformat()
+    for e in events:
+        e['registrationStatus'] = final_status(e, today)
+        if e.get('badgeText') == '접수중':
+            e['badgeText'] = '접수정보 없음'
+    future = [e for e in events if e['run'] >= today]
+    stats.update({
+        'verified_open_count':sum(e['registrationStatus']=='open' for e in future),
+        'need_verification_count':sum(e['registrationStatus']=='unknown' for e in future),
+        'date_window_count':sum(bool(e.get('start') and e.get('end') and e['start']<=today<=e['end']) for e in future),
+        'data_source_feed_enabled':any(spec.get('authorized') for spec in cfg.get('feeds',[])),
+        'not_live_status_monitoring':True,
+    })
     DOCS.mkdir(exist_ok=True)
     payload = {
         'schemaVersion': 1,
         'updatedAt': datetime.now(timezone.utc).isoformat(timespec='seconds'),
-        'sourceNote': '초기 2026 대회 목록과 승인된 피드 및 수동 확인분만 반영',
+        'sourceNote': '이 파일의 갱신시각은 파일 게시시각입니다. 공식 실시간 접수 검증과 다릅니다. 접수중은 24시간 내 출처 확인 대회만 표시합니다.',
+        'sourceHealth': { 'approvedFeedCount':stats['feed_success'], 'liveOfficialMonitoringEnabled':False, 'verifiedOpenCount':stats['verified_open_count'], 'unverifiedCount':stats['need_verification_count'] },
         'events':events,
     }
     (DOCS/'events.json').write_text(json.dumps(payload, ensure_ascii=False, separators=(',', ':'))+'\n', encoding='utf-8')
     (DOCS/'update-status.json').write_text(json.dumps({**stats,'checkedAt':payload['updatedAt'],'event_count':len(events)}, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
-    print(f"OK: 대회 {len(events)}개, 승인된 피드 성공 {stats['feed_success']}개, 실패 {len(stats['feed_failures'])}개")
+    print(f"OK: 대회 {len(events)}개, 최근 공식 확인 접수중 {stats['verified_open_count']}개, 접수 검증 필요 {stats['need_verification_count']}개, 피드 성공 {stats['feed_success']}개")
     for problem in stats['feed_failures']:
         print('경고:',problem)
     if stats['feed_failures'] and cfg.get('fail_on_feed_error'):
