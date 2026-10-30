@@ -6,10 +6,10 @@
   "feed_failures": [],
   "status_override_rows": 1,
   "verified_open_count": 0,
-  "need_verification_count": 68,
-  "date_window_count": 19,
+  "need_verification_count": 65,
+  "date_window_count": 16,
   "data_source_feed_enabled": false,
   "not_live_status_monitoring": true,
-  "checkedAt": "2026-10-30T11:52:51+00:00",
+  "checkedAt": "2026-10-30T23:46:06+00:00",
   "event_count": 397
 }
