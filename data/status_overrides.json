@@ -14,7 +14,10 @@
     "run": "2026-11-29",
     "start": "2026-07-31",
     "end": "2026-11-28",
-    "source": "https://runningwikii.com/entry/cheonan-independence-hall-marathon/ 대회 안내 (2026-11-24 재확인)"
+    "source": "https://runningwikii.com/entry/cheonan-independence-hall-marathon/ 대회 안내 (2026-11-24 재확인) · 공식 신청 페이지 peacewalk.imweb.me/join1 (2026-11-24 확인)",
+    "officialLink": "https://peacewalk.imweb.me/",
+    "registrationUrl": "https://peacewalk.imweb.me/join1",
+    "linkType": "apply"
   },
   {
     "title": "2026 원주 치악마라톤",
@@ -85,7 +88,12 @@
     "run": "2026-12-26",
     "start": "2026-08-25",
     "end": "2026-12-16",
-    "source": "https://runningwikii.com/entry/korea-season-race/ 대회 안내 (2026-11-24 재확인)"
+    "source": "공식 홈페이지 k-run.kr 대회 개최 취소 공지 (2026-11-24 확인)",
+    "registrationStatus": "cancelled",
+    "badgeText": "취소",
+    "officialLink": "https://k-run.kr/",
+    "statusSourceUrl": "https://k-run.kr/",
+    "statusVerifiedAt": "2026-11-24T23:30:00+09:00"
   },
   {
     "title": "2026 한강런",
@@ -152,5 +160,20 @@
     "end": "2026-12-31",
     "officialLink": "http://xn--zl2bt5ndwfh3g20k.kr/",
     "source": "공식 홈페이지 새해일출런.kr · 전국마라톤협회 대회정보 (2026-11-24 확인)"
+  },
+  {
+    "title": "2026 부산국제마라톤대회",
+    "run": "2026-12-06",
+    "registrationStatus": "closed",
+    "officialLink": "https://www.busanmarathon.com/",
+    "statusSourceUrl": "https://www.busanmarathon.com/",
+    "statusVerifiedAt": "2026-11-24T23:30:00+09:00",
+    "source": "공식 홈페이지 busanmarathon.com: 12/6 BEXCO 대회, 8/24 선착순 접수 (2026-11-24 확인)"
+  },
+  {
+    "title": "2026 부산브릿지마라톤",
+    "run": "2026-12-06",
+    "officialLink": "https://www.busanmarathon.com/",
+    "source": "공식 홈페이지 busanmarathon.com (2026-11-24 확인)"
   }
 ]
