@@ -4,12 +4,12 @@
   "feed_rows": 0,
   "feed_success": 0,
   "feed_failures": [],
-  "status_override_rows": 1,
+  "status_override_rows": 11,
   "verified_open_count": 0,
-  "need_verification_count": 17,
-  "date_window_count": 5,
+  "need_verification_count": 13,
+  "date_window_count": 7,
   "data_source_feed_enabled": false,
   "not_live_status_monitoring": true,
-  "checkedAt": "2026-11-23T22:39:09+00:00",
+  "checkedAt": "2026-11-24T05:08:35+00:00",
   "event_count": 397
 }
