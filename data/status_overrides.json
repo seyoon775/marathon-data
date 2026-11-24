@@ -175,5 +175,13 @@
     "run": "2026-12-06",
     "officialLink": "https://www.busanmarathon.com/",
     "source": "공식 홈페이지 busanmarathon.com (2026-11-24 확인)"
+  },
+  {
+    "title": "2027 북극곰 마라톤",
+    "run": "2027-01-23",
+    "officialLink": "https://polarbearrun.kr/",
+    "registrationUrl": "https://polarbearrun.kr/join/register.asp",
+    "linkType": "apply",
+    "source": "공식 홈페이지 polarbearrun.kr (주최 문의 메일 run@polarbearrun.kr) · 확인 2026-11-24"
   }
 ]
