@@ -93,5 +93,64 @@
     "start": "2026-08-14",
     "end": "2026-12-12",
     "source": "https://runningwikii.com/entry/hangang-run/ 대회 안내 (2026-11-24 재확인)"
+  },
+  {
+    "title": "2026 긍정 하프 마라톤",
+    "run": "2026-11-28",
+    "registrationStatus": "closed",
+    "statusVerifiedAt": "2026-11-24T23:05:00+09:00",
+    "statusSourceUrl": "https://www.kormarathon.com/ko/races/2026-positive-half-marathon",
+    "officialLink": "https://www.kormarathon.com/ko/races/2026-positive-half-marathon",
+    "source": "전국마라톤협회 대회정보 마감 표시 (2026-11-24 확인)"
+  },
+  {
+    "title": "2026 서울사랑마라톤",
+    "run": "2026-11-29",
+    "registrationStatus": "closed",
+    "statusVerifiedAt": "2026-11-24T23:05:00+09:00",
+    "statusSourceUrl": "https://www.kormarathon.com/ko/races/seoul-love-marathon-2026",
+    "officialLink": "https://www.kormarathon.com/ko/races/seoul-love-marathon-2026",
+    "source": "전국마라톤협회 대회정보 마감 표시 (2026-11-24 확인)"
+  },
+  {
+    "title": "제4회 가든파이브 라이프 레이스",
+    "run": "2026-12-05",
+    "registrationStatus": "closed",
+    "statusVerifiedAt": "2026-11-24T23:05:00+09:00",
+    "statusSourceUrl": "https://www.kormarathon.com/ko/races/4th-garden5-life-race-f989573765a34eaaa804837455213e7d",
+    "officialLink": "https://www.kormarathon.com/ko/races/4th-garden5-life-race-f989573765a34eaaa804837455213e7d",
+    "source": "전국마라톤협회 대회정보 마감 표시 (2026-11-24 확인)"
+  },
+  {
+    "title": "제1회 정읍 고향사랑기부마라톤",
+    "run": "2026-12-06",
+    "registrationStatus": "closed",
+    "statusVerifiedAt": "2026-11-24T23:05:00+09:00",
+    "statusSourceUrl": "https://www.kormarathon.com/ko/races/2026-jeongeup-hometown-love-marathon-5b10e501c99d484f8311dea3aec5e08e",
+    "officialLink": "https://www.kormarathon.com/ko/races/2026-jeongeup-hometown-love-marathon-5b10e501c99d484f8311dea3aec5e08e",
+    "source": "전국마라톤협회 대회정보 마감 표시 (2026-11-24 확인)"
+  },
+  {
+    "title": "제5회 기장군육상연맹 마라톤대회",
+    "run": "2026-12-13",
+    "registrationStatus": "closed",
+    "statusVerifiedAt": "2026-11-24T23:05:00+09:00",
+    "statusSourceUrl": "https://www.kormarathon.com/ko/races/5th-gijang-county-athletics-federation-marathon",
+    "officialLink": "https://www.kormarathon.com/ko/races/5th-gijang-county-athletics-federation-marathon",
+    "source": "전국마라톤협회 대회정보 마감 표시 (2026-11-24 확인)"
+  },
+  {
+    "title": "제36회 진주마라톤",
+    "run": "2026-12-13",
+    "officialLink": "https://www.jinma.co.kr/ko/",
+    "source": "공식 홈페이지 jinma.co.kr · 전국마라톤협회 대회정보 마감 표시 (2026-11-24 확인)"
+  },
+  {
+    "title": "2027 새해일출런",
+    "run": "2027-01-01",
+    "start": "2026-10-28",
+    "end": "2026-12-31",
+    "officialLink": "http://xn--zl2bt5ndwfh3g20k.kr/",
+    "source": "공식 홈페이지 새해일출런.kr · 전국마라톤협회 대회정보 (2026-11-24 확인)"
   }
 ]
