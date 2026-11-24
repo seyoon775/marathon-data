@@ -1,15 +1,15 @@
 {
   "base_rows": 397,
-  "manual_rows": 15,
+  "manual_rows": 25,
   "feed_rows": 0,
   "feed_success": 0,
   "feed_failures": [],
-  "status_override_rows": 21,
+  "status_override_rows": 28,
   "verified_open_count": 0,
-  "need_verification_count": 18,
-  "date_window_count": 17,
+  "need_verification_count": 27,
+  "date_window_count": 23,
   "data_source_feed_enabled": false,
   "not_live_status_monitoring": true,
-  "checkedAt": "2026-11-24T14:14:09+00:00",
-  "event_count": 412
+  "checkedAt": "2026-11-24T14:25:03+00:00",
+  "event_count": 422
 }
