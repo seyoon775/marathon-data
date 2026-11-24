@@ -183,5 +183,54 @@
     "registrationUrl": "https://polarbearrun.kr/join/register.asp",
     "linkType": "apply",
     "source": "공식 홈페이지 polarbearrun.kr (주최 문의 메일 run@polarbearrun.kr) · 확인 2026-11-24"
+  },
+  {
+    "title": "제19회 전국새해알몸마라톤",
+    "run": "2027-01-03",
+    "registrationUrl": "http://r.dgrunner.co.kr/run/1000.asp?T=3",
+    "linkType": "apply",
+    "source": "공식 참가신청 페이지 · 확인 2026-11-24"
+  },
+  {
+    "title": "제21회 여수해양마라톤",
+    "run": "2027-01-10",
+    "registrationUrl": "http://ysmarathon.co.kr/participation/person",
+    "linkType": "apply",
+    "source": "공식 참가신청 페이지 · 확인 2026-11-24"
+  },
+  {
+    "title": "2027 전마협 새해 동계 마라톤",
+    "run": "2027-01-10",
+    "registrationUrl": "https://mara1080.com/event/2c881231-b5dd-4ae8-a587-c02d539566af/registration/apply",
+    "linkType": "apply",
+    "source": "공식 참가신청 페이지 · 확인 2026-11-24"
+  },
+  {
+    "title": "제20회 제천의림지삼한초록길 알몸마라톤",
+    "run": "2027-01-10",
+    "registrationUrl": "http://jcaaf.com/theme/jcaaf/html/participation/01.php",
+    "linkType": "apply",
+    "source": "공식 참가신청 페이지 · 확인 2026-11-24"
+  },
+  {
+    "title": "2027 전마협 제주 4Full 마라톤",
+    "run": "2027-01-22",
+    "registrationUrl": "https://mara1080.com/event/f3c362bc-532f-4f3c-bc21-76d3023bfb3a/registration/apply",
+    "linkType": "apply",
+    "source": "공식 참가신청 페이지 · 확인 2026-11-24"
+  },
+  {
+    "title": "2027 전마협 청주 무심천 투데이 마라톤(토)",
+    "run": "2027-02-20",
+    "registrationUrl": "https://mara1080.com/event/3a1225a6-b473-4fb7-8f26-cda304cff617/registration/apply",
+    "linkType": "apply",
+    "source": "공식 참가신청 페이지 · 확인 2026-11-24"
+  },
+  {
+    "title": "2027 전마협 청주 무심천 투데이 마라톤(일)",
+    "run": "2027-02-21",
+    "registrationUrl": "https://mara1080.com/event/b1aef378-cf4a-43b9-b2fd-a2d1ae33bc15/registration/apply",
+    "linkType": "apply",
+    "source": "공식 참가신청 페이지 · 확인 2026-11-24"
   }
 ]
