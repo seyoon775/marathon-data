@@ -8,5 +8,90 @@
     "statusSourceUrl": "https://www.chuncheonmarathon.com/etc/ready.html",
     "officialLink": "https://www.chuncheonmarathon.com/",
     "source": "공식 일반접수 안내 확인 (2026-10-15)"
+  },
+  {
+    "title": "2026 천안독립기념관 마라톤대회",
+    "run": "2026-11-29",
+    "start": "2026-07-31",
+    "end": "2026-11-28",
+    "source": "https://runningwikii.com/entry/cheonan-independence-hall-marathon/ 대회 안내 (2026-11-24 재확인)"
+  },
+  {
+    "title": "2026 원주 치악마라톤",
+    "run": "2026-11-29",
+    "start": "2026-09-17",
+    "end": "2026-10-30",
+    "source": "https://runningwikii.com/entry/wonju-chiak-marathon-2026/ 대회 안내 (2026-11-24 재확인)",
+    "registrationStatus": "closed",
+    "statusVerifiedAt": "2026-11-24T14:10:00+09:00",
+    "statusSourceUrl": "https://runningwikii.com/entry/wonju-chiak-marathon-2026/"
+  },
+  {
+    "title": "제14회 안중근 평화 마라톤",
+    "run": "2026-11-29",
+    "start": "2026-08-02",
+    "end": "2026-11-22",
+    "source": "https://linkareer.com/activity/339787 주최 공고 (2026-11-24 재확인)",
+    "registrationStatus": "closed",
+    "statusVerifiedAt": "2026-11-24T14:10:00+09:00",
+    "statusSourceUrl": "https://linkareer.com/activity/339787",
+    "officialLink": "https://ajgrun.kr/"
+  },
+  {
+    "title": "2026 하남 미사 호수 에너지런",
+    "run": "2026-12-05",
+    "start": "2026-08-03",
+    "end": "2026-11-26",
+    "source": "https://linkareer.com/activity/341929 주최 공고 (2026-11-24 재확인)"
+  },
+  {
+    "title": "2026 ONE MORE RUN",
+    "run": "2026-12-12",
+    "start": "2026-09-11",
+    "end": "2026-11-20",
+    "source": "https://runningwikii.com/entry/one-more-run/ 대회 안내 (2026-11-24 재확인)",
+    "registrationStatus": "closed",
+    "statusVerifiedAt": "2026-11-24T14:10:00+09:00",
+    "statusSourceUrl": "https://runningwikii.com/entry/one-more-run/",
+    "officialLink": "http://www.omrun.co.kr/"
+  },
+  {
+    "title": "제3회 긍정의힘 마라톤",
+    "run": "2026-12-12",
+    "start": "2026-08-30",
+    "end": "2026-12-02",
+    "source": "https://runningwikii.com/entry/positive-power-marathon/ 대회 안내 (2026-11-24 재확인)"
+  },
+  {
+    "title": "제36회 진주마라톤",
+    "run": "2026-12-13",
+    "start": "2026-10-22",
+    "end": "2026-11-16",
+    "source": "https://runningwikii.com/entry/jinju-marathon/ 대회 안내 (2026-11-24 재확인)",
+    "registrationStatus": "closed",
+    "statusVerifiedAt": "2026-11-24T14:10:00+09:00",
+    "statusSourceUrl": "https://runningwikii.com/entry/jinju-marathon/"
+  },
+  {
+    "title": "제2회 청춘 릴레이 마라톤",
+    "run": "2026-12-19",
+    "start": "2026-08-12",
+    "end": "2026-12-09",
+    "source": "https://linkareer.com/activity/342955 주최 공고 (2026-11-24 재확인)",
+    "officialLink": "https://youngrun.kr/"
+  },
+  {
+    "title": "2026 코리아 시즌 레이스",
+    "run": "2026-12-26",
+    "start": "2026-08-25",
+    "end": "2026-12-16",
+    "source": "https://runningwikii.com/entry/korea-season-race/ 대회 안내 (2026-11-24 재확인)"
+  },
+  {
+    "title": "2026 한강런",
+    "run": "2026-12-28",
+    "start": "2026-08-14",
+    "end": "2026-12-12",
+    "source": "https://runningwikii.com/entry/hangang-run/ 대회 안내 (2026-11-24 재확인)"
   }
 ]
