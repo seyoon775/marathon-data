@@ -232,5 +232,36 @@
     "registrationUrl": "https://mara1080.com/event/b1aef378-cf4a-43b9-b2fd-a2d1ae33bc15/registration/apply",
     "linkType": "apply",
     "source": "공식 참가신청 페이지 · 확인 2026-11-24"
+  },
+  {
+    "title": "2026 HUG RUN 허그런",
+    "run": "2026-12-05",
+    "registrationUrl": "https://www.leisuredy.com/product/2521",
+    "linkType": "apply",
+    "source": "공식 홈페이지 hugrun.kr 신청 링크 · 확인 2026-11-26"
+  },
+  {
+    "title": "제2회 입춘대길 춘천 소양강마라톤대회",
+    "run": "2027-03-27",
+    "registrationUrl": "https://ccpmarathon.kr/spring/apply.html",
+    "linkType": "apply",
+    "source": "공식 참가신청 페이지 · 확인 2026-11-26"
+  },
+  {
+    "title": "제9회 오션뷰 기장바다마라톤",
+    "run": "2027-04-18",
+    "registrationUrl": "https://www.badarun.co.kr/ko/sub2_3.html",
+    "linkType": "apply",
+    "registrationStatus": "closed",
+    "statusVerifiedAt": "2026-11-26T05:30:00+09:00",
+    "statusSourceUrl": "https://www.badarun.co.kr/ko/sub2_3.html",
+    "source": "공식 개인신청 페이지 '참가신청 접수 종료' · 확인 2026-11-26"
+  },
+  {
+    "title": "제34회 315마라톤",
+    "run": "2027-03-28",
+    "officialLink": "https://www.masanmarathon.or.kr/",
+    "linkType": "official",
+    "source": "주최 3·15마라톤 공식 홈페이지(전년도 대회 공식 링크 기준, 34회 페이지 미확인) · 확인 2026-11-26"
   }
 ]
